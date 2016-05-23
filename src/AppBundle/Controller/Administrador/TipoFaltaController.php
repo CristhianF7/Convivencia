@@ -12,7 +12,7 @@ use AppBundle\Form\TipoFaltaType;
 /**
  * TipoFalta controller.
  *
- * @Route("/tipofalta")
+ * @Route("/administrador/tipofalta")
  */
 class TipoFaltaController extends Controller
 {

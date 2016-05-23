@@ -12,7 +12,7 @@ use AppBundle\Form\AcudienteType;
 /**
  * Acudiente controller.
  *
- * @Route("/acudiente")
+ * @Route("/administrador/acudiente")
  */
 class AcudienteController extends Controller
 {

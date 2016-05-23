@@ -12,7 +12,7 @@ use AppBundle\Form\EstudianteType;
 /**
  * Estudiante controller.
  *
- * @Route("/estudiante")
+ * @Route("/administrador/estudiante")
  */
 class EstudianteController extends Controller
 {
