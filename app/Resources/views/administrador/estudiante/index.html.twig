@@ -1,0 +1,49 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+<div class="col-lg-6">
+    <h1>Estudiante list</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Primernombre</th>
+                <th>Segundonombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapellido</th>
+                <th>Fechanacimiento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estudiante in estudiantes %}
+            <tr>
+                <td><a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">{{ estudiante.id }}</a></td>
+                <td>{{ estudiante.primerNombre }}</td>
+                <td>{{ estudiante.segundoNombre }}</td>
+                <td>{{ estudiante.primerApellido }}</td>
+                <td>{{ estudiante.segundoApellido }}</td>
+                <td>{% if estudiante.fechaNacimiento %}{{ estudiante.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('estudiante_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

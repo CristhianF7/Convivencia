@@ -21,5 +21,15 @@ class Docente extends BasePersona
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function __toString()
+    {
+        return $this->getPrimerNombre() . " " . $this->getSegundoNombre() . " " . $this->getPrimerApellido();
+    }
 }
 

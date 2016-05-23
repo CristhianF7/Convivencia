@@ -1,0 +1,41 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+<div class="col-lg-6">
+    <h1>TipoFalta list</h1>
+
+    <table  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipoFaltum in tipoFaltas %}
+            <tr>
+                <td><a href="{{ path('tipofalta_show', { 'id': tipoFaltum.id }) }}">{{ tipoFaltum.id }}</a></td>
+                <td>{{ tipoFaltum.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tipofalta_show', { 'id': tipoFaltum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tipofalta_edit', { 'id': tipoFaltum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tipofalta_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

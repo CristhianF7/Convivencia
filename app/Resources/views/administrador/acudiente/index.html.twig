@@ -1,0 +1,49 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+<div class="col-lg-6">
+    <h1>Acudiente list</h1>
+
+    <table  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Primernombre</th>
+                <th>Segundonombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapellido</th>
+                <th>Fechanacimiento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for acudiente in acudientes %}
+            <tr>
+                <td><a href="{{ path('acudiente_show', { 'id': acudiente.id }) }}">{{ acudiente.id }}</a></td>
+                <td>{{ acudiente.primerNombre }}</td>
+                <td>{{ acudiente.segundoNombre }}</td>
+                <td>{{ acudiente.primerApellido }}</td>
+                <td>{{ acudiente.segundoApellido }}</td>
+                <td>{% if acudiente.fechaNacimiento %}{{ acudiente.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('acudiente_show', { 'id': acudiente.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('acudiente_edit', { 'id': acudiente.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('acudiente_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

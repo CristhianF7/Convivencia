@@ -9,8 +9,9 @@
 namespace AppBundle\Models;
 use Doctrine\ORM\Mapping\Column; 
 use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
- * @MappedSuperclass
+ * 
  */
 abstract class Persona implements UserInterface
 {
@@ -30,7 +31,7 @@ abstract class Persona implements UserInterface
      * @var string
      * @Column(type="string")
      */
-    protected $aprimerApellido;
+    protected $primerApellido;
     
     /**
      * @var string
@@ -54,9 +55,9 @@ abstract class Persona implements UserInterface
         return $this->segundoNombre;
     }
 
-    public function getAprimerApellido()
+    public function getPrimerApellido()
     {
-        return $this->aprimerApellido;
+        return $this->primerApellido;
     }
 
     public function getSegundoApellido()
@@ -79,9 +80,9 @@ abstract class Persona implements UserInterface
         $this->segundoNombre = $segundoNombre;
     }
 
-    public function setAprimerApellido($aprimerApellido)
+    public function setPrimerApellido($primerApellido)
     {
-        $this->aprimerApellido = $aprimerApellido;
+        $this->primerApellido = $primerApellido;
     }
 
     public function setSegundoApellido($segundoApellido)
@@ -118,7 +119,4 @@ abstract class Persona implements UserInterface
     {
         
     }
-
-
-
 }

@@ -1,0 +1,18 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+<div class="col-lg-6">
+    <h1>Estudiante creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('estudiante_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
