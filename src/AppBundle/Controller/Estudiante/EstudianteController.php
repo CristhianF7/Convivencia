@@ -6,28 +6,28 @@
  * and open the template in the editor.
  */
 
-namespace AppBundle\Controller\Docente;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace AppBundle\Controller\Estudiante;
+use AppBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 /**
- * Description of DocenteController
+ * Description of EstudianteController
  *
- * @author flia
- * @Route("/docentes")
+ * @author CristhianF
+ * @Route("/estudiantes")
  */
-class DocenteController extends Controller
+class EstudianteController extends BaseController
 {
+    
     /**
-     * @Route("/", name="docente-entrada")
+     * @Route("/", name="estudiantes-entrada")
      */
     public function entradaAction()
     {
-        return $this->render('docentes/entrada.html.twig');
+        return $this->render('estudiante/entrada.html.twig');
     }
     
     /**
-     * @Route("/perfil", name="docente-perfil")
+     * @Route("/perfil", name="estudiante-perfil")
      */
     public function perfilAction()
     {

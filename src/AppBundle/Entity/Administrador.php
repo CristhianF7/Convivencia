@@ -20,7 +20,7 @@ class Administrador extends BasePersona
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 
     /**
@@ -31,6 +31,11 @@ class Administrador extends BasePersona
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function getRoles()
+    {
+        return array('ROLE_ADMIN');
     }
 }
 

@@ -7,14 +7,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">App Colegio</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">App Colegio</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Opciones</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Salir</a></li>
+                <li><a href="{{ path('homepage') }}">Inicio</a></li>                
+            {% if is_granted('ROLE_ADMIN') %}    
+                <li><a href="{{ path('admin-perfil') }}">Perfil</a></li>
+            {% elseif is_granted('ROLE_DOCENTE') %}
+                <li><a href="{{ path('docente-perfil') }}">Perfil</a></li>
+            {% endif %}    
+                
+            {% if is_granted('ROLE_ADMIN') %}    
+                <li><a href="{{ logout_path('admin') }}">Salir</a></li>
+            {% elseif is_granted('ROLE_DOCENTE') %}
+                 <li><a href="{{ logout_path('docente') }}">Salir</a></li>
+            {% endif %}
             </ul>
         </div>
     </div>

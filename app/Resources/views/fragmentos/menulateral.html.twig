@@ -1,8 +1,22 @@
 <ul class="nav nav-sidebar menulateral">
+    {% if is_granted('ROLE_ADMIN') %}
     <li class="menu-lateral-item" id="admin-inicio" ><a href="{{ path('admin-entrada') }}" id="admin-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
     <li class="menu-lateral-item" id="docente_index"><a href="{{ path('docente_index') }}" id="docente_index-a"><i class="fa fa-star-o"></i> Docentes <span class="sr-only"></span></a></li>
     <li class="menu-lateral-item" id="estudiante_index"><a href="{{ path('estudiante_index') }}" id="estudiante_index-a"><i class="fa fa-graduation-cap"></i> Estudiantes <span class="sr-only"></span></a></li>
     <li class="menu-lateral-item" id="acudiente_index"><a href="{{ path('acudiente_index') }}" id="acudiente_index-a"><i class="fa fa-users"></i> Acudientes <span class="sr-only"></span></a></li>    
     <li class="menu-lateral-item" id="tipofalta_index"><a href="{{ path('tipofalta_index') }}" id="tipofalta_index-a"><i class="fa fa-bullhorn" aria-hidden="true"></i> Tipos de Faltas <span class="sr-only"></span></a></li>
     <li class="menu-lateral-item" id="admin-reportes"><a href="#" id="admin-reportes-a"><i class="fa fa-bookmark-o"></i> Reportes <span class="sr-only"></span></a></li>
-</ul>
+    {% endif %}
+    
+    {% if is_granted('ROLE_DOCENTE') %}
+         <li class="menu-lateral-item" id="docente-inicio" ><a href="{{ path('docente-entrada') }}" id="docente-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
+   
+    {% endif %}
+    
+    {% if is_granted('ROLE_ESTUDIANTE') %}
+         <li class="menu-lateral-item" id="estudiante-inicio" ><a href="{{ path('estudiantes-entrada') }}" id="estudiante-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
+   
+    {% endif %}
+    
+    
+    </ul>

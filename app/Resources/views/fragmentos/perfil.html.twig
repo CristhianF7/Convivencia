@@ -1,0 +1,18 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div style="text-align: center;">
+     {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+         <div class="panel panel-default">
+            <div class="panel-body">
+              <i class="fa fa-user fa-5x"></i><br/>
+                NOMBRES: {{app.user.primerNombre}} {{app.user.primerNombre}} <br/>
+                APELLIDOS: {{app.user.primerApellido}} {{app.user.segundoApellido}} <br/>
+                USUARIO: {{app.user.username}}   
+            </div>
+          </div>
+        
+ 
+    {%endif%}
+    </div>
+{% endblock %}

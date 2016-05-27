@@ -1,15 +1,29 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    role_hierarchy:
+        ROLE_ACUDIENTE: ROLE_USER
+        ROLE_ESTUDIANTE: ROLE_USER
+        ROLE_DOCENTE: ROLE_USER
+        ROLE_ADMIN:  ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_USER,ROLE_DOCENTE,ROLE_ESTUDIANTE, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    
     encoders:
-        Symfony\Component\Security\Core\User\User:
+        AppBundle\Entity\Administrador:
             algorithm: bcrypt
-            cost:      12
+        AppBundle\Entity\Docente:
+            algorithm: bcrypt
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        administradores:
+            entity:
+                class: AppBundle:Administrador
+        docentes:
+            entity:
+                class: AppBundle:Docente
+                #property: username
+                    # if you're using multiple entity managers
+                    # manager_name: customer
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -17,21 +31,57 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        
+        admin_login:
+            pattern:  ^/administrador/login$
             anonymous: ~
+            provider: administradores
+            context: session_key
             form_login:
-                login_path: login
-                check_path: login
-        login_firewall:
-            pattern:   ^/login$
+              login_path: login
+              check_path: login
+              default_target_path: admin-entrada
+        admin:
+            pattern: ^/administrador
+            provider: administradores
+            context: session_key
+            form_login:
+              login_path: login
+              check_path: login
+              default_target_path: admin-entrada
+            logout:
+              path:   /administrador/logout
+              target: /
+              invalidate_session: false
+        
+        docente_login:
+            pattern:  ^/docentes/login$
             anonymous: ~
-        secured_area:
-            pattern:    ^/
-            form_login: ~
+            provider: docentes
+            context: session_key_docentes
+            form_login:
+              login_path: login_docentes
+              check_path: login_docentes
+              default_target_path: docente-entrada
+        docente:
+            pattern: ^/docentes
+            provider: docentes
+            context: session_key_docentes
+            form_login:
+              login_path: login_docentes
+              check_path: login_docentes
+              default_target_path: docente-entrada
+            logout:
+              path:   /docentes/logout
+              target: /
+              invalidate_session: false    
             
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_ADMIN }
+        - { path: ^/administrador/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/administrador, roles: ROLE_ADMIN }
+        
+        - { path: ^/docentes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/docentes, roles: ROLE_DOCENTE }
             # activate different ways to authenticate
 
             # http_basic: ~

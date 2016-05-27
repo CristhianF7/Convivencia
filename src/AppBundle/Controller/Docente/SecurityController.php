@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Docente;
  
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/administrador/login", name="login")
+     * @Route("/docentes/login", name="login_docentes")
      */
     public function loginAction(Request $request)
     {
@@ -25,9 +25,8 @@ class SecurityController extends Controller
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        
         return $this->render(
-            'administrador/login.html.twig',
+            'docentes/login.html.twig',
             array(
                 // last username entered by the user
                 'last_username' => $lastUsername,
@@ -37,7 +36,7 @@ class SecurityController extends Controller
     }
     
     /**
-     * @Route("/administrator/login_check", name="login_check")
+     * @Route("/docentes/login_check", name="login_check")
      */
     public function loginCheckAction()
     {

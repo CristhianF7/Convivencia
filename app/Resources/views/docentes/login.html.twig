@@ -13,8 +13,8 @@
 {% if error %}
     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
-      <form class="form-signin" action="{{ path('login') }}" method="POST">
-        <h2 class="form-signin-heading">ACCESO ADMIN</h2>
+      <form class="form-signin" action="{{ path('login_docentes') }}" method="POST">
+        <h2 class="form-signin-heading">ACCESO DOCENTES</h2>
         <label for="inputEmail" class="sr-only">Usuario</label>
         <input type="text" id="username" name="_username" class="form-control" placeholder="Usuario" required autofocus value="{{ last_username }}">
         <label for="inputPassword" class="sr-only">Password</label>
@@ -22,9 +22,8 @@
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
       </form>
-                    <a  href="{{ path('homepage') }}">Regresar</a>
-
-
+        
+        <a  href="{{ path('homepage') }}">Regresar</a>
     </div> <!-- /container -->
 <!-- End: Login -->
 

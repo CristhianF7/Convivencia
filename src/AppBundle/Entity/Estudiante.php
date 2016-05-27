@@ -27,9 +27,9 @@ class Estudiante extends BasePersona
         return $this->id;
     }
     
-    public function __toString()
+    public function getRoles()
     {
-        return $this->getPrimerNombre() . " " . $this->getSegundoNombre() . " " . $this->getPrimerApellido();
+        return array('ROLE_ESTUDIANTE');
     }
 }
 

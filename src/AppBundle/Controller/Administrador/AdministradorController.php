@@ -20,4 +20,12 @@ class AdministradorController extends BaseController
     {
         return $this->render('administrador/entrada.html.twig');
     }
+    
+     /**
+     * @Route("/perfil", name="admin-perfil")
+     */
+    public function perfilAction()
+    {
+        return $this->render('fragmentos/perfil.html.twig');
+    }
 }

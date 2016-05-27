@@ -1,7 +1,12 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-
+    
+logout:
+   path: /docentes/logout
+   
+logout_admin:
+   path: /administrador/logout
 #login:
 #    pattern:   /administrador/login
 #    defaults:  { _controller: AppBundle:Security:login }
