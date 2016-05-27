@@ -7,6 +7,9 @@ logout:
    
 logout_admin:
    path: /administrador/logout
+   
+logout_estudiantes:
+   path: /estudiantes/logout
 #login:
 #    pattern:   /administrador/login
 #    defaults:  { _controller: AppBundle:Security:login }

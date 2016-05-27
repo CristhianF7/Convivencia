@@ -21,6 +21,9 @@ security:
         docentes:
             entity:
                 class: AppBundle:Docente
+        estudiantes:
+            entity:
+                class: AppBundle:Estudiante
                 #property: username
                     # if you're using multiple entity managers
                     # manager_name: customer
@@ -75,6 +78,28 @@ security:
               path:   /docentes/logout
               target: /
               invalidate_session: false    
+        
+        estudiantes_login:
+            pattern:  ^/estudiantes/login$
+            anonymous: ~
+            provider: estudiantes
+            context: session_key_estudiantes
+            form_login:
+              login_path: login_estudiantes
+              check_path: login_estudiantes
+              default_target_path: estudiantes-entrada
+        docente:
+            pattern: ^/estudiantes
+            provider: estudiantes
+            context: session_key_estudiantes
+            form_login:
+              login_path: login_estudiantes
+              check_path: login_estudiantes
+              default_target_path: estudiantes-entrada
+            logout:
+              path:   /estudiantes/logout
+              target: /
+              invalidate_session: false 
             
     access_control:
         - { path: ^/administrador/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -82,6 +107,9 @@ security:
         
         - { path: ^/docentes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/docentes, roles: ROLE_DOCENTE }
+        
+        - { path: ^/estudiantes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/estudiantes, roles: ROLE_ESTUDIANTE }
             # activate different ways to authenticate
 
             # http_basic: ~
