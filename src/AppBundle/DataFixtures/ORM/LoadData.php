@@ -33,8 +33,8 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $docente->setPrimerApellido('Pérez '.$i);
             $docente->setSegundoApellido('admin '.$i);
             $docente->setFechaNacimiento(new \DateTime('now'));
-            $docente->setUsername("profe_".$i."@docentes.com");
-            $docente->setEmail("profe_".$i."@docentes.com");
+            $docente->setUsername("profe_".$i);
+            $docente->setEmail("profe_".$i);
             
             $plainPassword = '123456';
             $encoder = $this->container->get('security.password_encoder');
@@ -89,8 +89,8 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $admin->setPrimerApellido("Admin");
             $admin->setSegundoApellido("...");
             $admin->setFechaNacimiento(new \DateTime());
-            $admin->setEmail("admin@admin.com");
-            $admin->setUsername("admin@admin.com");
+            $admin->setEmail("admin");
+            $admin->setUsername("admin");
             
             $plainPassword = '123456';
             $encoder = $this->container->get('security.password_encoder');
