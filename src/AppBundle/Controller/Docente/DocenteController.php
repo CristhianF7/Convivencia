@@ -33,4 +33,17 @@ class DocenteController extends Controller
     {
         return $this->render('fragmentos/perfil.html.twig');
     }
+    
+    /**
+     * @Route("/registro", name="docente-registro")
+     */
+    public function RegistrarFaltaAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tiposFaltas = $em->getRepository('AppBundle:TipoFalta')->findAll();
+        dump($tiposFaltas);
+        return $this->render('docentes/registroFalta.html.twig',[
+            'tiposFaltas' => $tiposFaltas
+        ]);
+    }
 }

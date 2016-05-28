@@ -1,0 +1,27 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+<div class="col-lg-6">
+    <h1>Falta creation</h1>
+
+    {{ form_start(form) }}
+    <div style="display: none;">{{ form_row(form.docente) }}</div>
+        {{ form_widget(form) }}
+        
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('docentes_falta_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        var usuario = "{{ app.user.id }}";
+        console.log(usuario);
+        $("#falta_docente").val(usuario);
+    </script>
+{% endblock %}   

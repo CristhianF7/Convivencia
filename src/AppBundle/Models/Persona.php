@@ -185,6 +185,8 @@ abstract class Persona implements UserInterface, \Serializable
     }
 
 
-
+    public function __toString() {
+        return $this->getPrimerNombre()." ".$this->getPrimerApellido();
+    }
     
 }

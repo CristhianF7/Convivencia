@@ -1,0 +1,30 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-6">
+    <h1>Falta</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ faltum.id }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ faltum.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if faltum.fechaCreacion %}{{ faltum.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('estudiante_falta_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

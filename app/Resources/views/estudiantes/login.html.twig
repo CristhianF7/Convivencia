@@ -4,11 +4,7 @@
     <!-- Start: Login --->
      
 <div class="container" style="text-align: center;">
-    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
- 
-        {{app.user.name}} {{app.user.username}} {{app.user.email}}  {{ app.user.role }}     
- 
-    {%endif%}
+
     
 {% if error %}
     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

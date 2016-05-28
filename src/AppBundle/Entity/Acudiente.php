@@ -33,7 +33,7 @@ class Acudiente extends BasePersona
         return $this->id;
     }
     
-     public function getRoles()
+    public function getRoles()
     {
         return array('ROLE_ACUDIENTE');
     }

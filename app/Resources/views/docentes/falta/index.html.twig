@@ -1,0 +1,47 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-6">
+        <h1>Falta list</h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>                
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Fechacreacion</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faltum in faltas %}
+                    {% if faltum.docente.id == app.user.id %}
+                    <tr>
+                        <td><a href="{{ path('docentes_falta_show', { 'id': faltum.id }) }}">{{ faltum.id }}</a></td>
+                        <td>{{ faltum.estudiante }}</td>
+                        <td>{{ faltum.descripcion }}</td>
+                        <td>{% if faltum.fechaCreacion %}{{ faltum.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('docentes_falta_show', { 'id': faltum.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('docentes_falta_edit', { 'id': faltum.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('docentes_falta_new') }}">Create a new entry</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

@@ -10,11 +10,18 @@
     
     {% if is_granted('ROLE_DOCENTE') %}
          <li class="menu-lateral-item" id="docente-inicio" ><a href="{{ path('docente-entrada') }}" id="docente-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
+         <li class="menu-lateral-item" id="docentes_falta_index" ><a href="{{ path('docentes_falta_index') }}" id="docentes_falta_index-a"><i class="fa fa-dashboard"></i> Registro de Falta <span class="sr-only"></span></a></li>
    
     {% endif %}
     
     {% if is_granted('ROLE_ESTUDIANTE') %}
          <li class="menu-lateral-item" id="estudiante-inicio" ><a href="{{ path('estudiantes-entrada') }}" id="estudiante-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
+         <li class="menu-lateral-item" id="estudiante_falta_index" ><a href="{{ path('estudiante_falta_index') }}" id="estudiante_falta_index-a"><i class="fa fa-bullhorn"></i> Mis faltas <span class="sr-only"></span></a></li>
+   
+    {% endif %}
+    
+     {% if is_granted('ROLE_ACUDIENTE') %}
+         <li class="menu-lateral-item" id="estudiante-inicio" ><a href="{{ path('acudientes-entrada') }}" id="estudiante-inicio-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
    
     {% endif %}
     

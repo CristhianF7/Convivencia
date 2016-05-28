@@ -26,7 +26,7 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
 
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 11; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $docente = new Docente();
             $docente->setPrimerNombre('Profe ' .$i);
             $docente->setSegundoNombre('Pepito '.$i);
@@ -50,22 +50,32 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $estudiante->setPrimerApellido('Suárez '.$i);
             $estudiante->setSegundoApellido('Hernández '.$i);
             $estudiante->setFechaNacimiento(new \DateTime('now'));
-            $estudiante->setUsername("estudiante_".$i."@estudiantes.com");
-            $estudiante->setEmail("estudiante_".$i."@estudiantes.com");
-            $estudiante->setPassword("123456");
+            $estudiante->setUsername("estudiante_".$i);
+            $estudiante->setEmail("estudiante_".$i);
+            
+            $plainPassword = '123456';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($estudiante, $plainPassword);
+            $estudiante->setPassword($encoded);
+            
             $manager->persist($estudiante);
         }   
         
-        for ($i = 1; $i <= 11; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $acudiente = new Acudiente();
             $acudiente->setPrimerNombre('Acudiente ' .$i);
             $acudiente->setSegundoNombre('... '.$i);
             $acudiente->setPrimerApellido('Torres '.$i);
             $acudiente->setSegundoApellido('Hernández '.$i);
             $acudiente->setFechaNacimiento(new \DateTime('now'));
-            $acudiente->setUsername("acudiente".$i);
-            $acudiente->setEmail("acudiente:".$i."@acudientes.com");
-            $acudiente->setPassword("123456");
+            $acudiente->setUsername("acudiente_".$i);
+            $acudiente->setEmail("acudiente_".$i);
+            
+            $plainPassword = '123456';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($acudiente, $plainPassword);
+            $acudiente->setPassword($encoded);
+            
             $manager->persist($acudiente);
         }  
         

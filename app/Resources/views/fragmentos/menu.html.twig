@@ -22,6 +22,12 @@
                 <li><a href="{{ logout_path('admin') }}">Salir</a></li>
             {% elseif is_granted('ROLE_DOCENTE') %}
                  <li><a href="{{ logout_path('docente') }}">Salir</a></li>
+            {% elseif is_granted('ROLE_ESTUDIANTE') %}
+                <li><a href="{{ path('estudiante-perfil') }}">Perfil</a></li>
+                <li><a href="{{ logout_path('estudiantes') }}">Salir</a></li>
+             {% elseif is_granted('ROLE_ACUDIENTE') %}
+                <li><a href="{{ path('acudientes-perfil') }}">Perfil</a></li>
+                <li><a href="{{ logout_path('acudientes') }}">Salir</a></li>
             {% endif %}
             </ul>
         </div>

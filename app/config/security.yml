@@ -13,6 +13,10 @@ security:
             algorithm: bcrypt
         AppBundle\Entity\Docente:
             algorithm: bcrypt
+        AppBundle\Entity\Estudiante:
+            algorithm: bcrypt
+        AppBundle\Entity\Acudiente:
+            algorithm: bcrypt
 
     providers:
         administradores:
@@ -24,6 +28,9 @@ security:
         estudiantes:
             entity:
                 class: AppBundle:Estudiante
+        acudientes:
+            entity:
+                class: AppBundle:Acudiente
                 #property: username
                     # if you're using multiple entity managers
                     # manager_name: customer
@@ -88,7 +95,7 @@ security:
               login_path: login_estudiantes
               check_path: login_estudiantes
               default_target_path: estudiantes-entrada
-        docente:
+        estudiantes:
             pattern: ^/estudiantes
             provider: estudiantes
             context: session_key_estudiantes
@@ -100,6 +107,8 @@ security:
               path:   /estudiantes/logout
               target: /
               invalidate_session: false 
+        
+  
             
     access_control:
         - { path: ^/administrador/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -110,6 +119,10 @@ security:
         
         - { path: ^/estudiantes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/estudiantes, roles: ROLE_ESTUDIANTE }
+        
+       
+        
+        
             # activate different ways to authenticate
 
             # http_basic: ~

@@ -10,6 +10,9 @@ logout_admin:
    
 logout_estudiantes:
    path: /estudiantes/logout
+
+logout_acudientes:
+   path: /acudientes/logout
 #login:
 #    pattern:   /administrador/login
 #    defaults:  { _controller: AppBundle:Security:login }

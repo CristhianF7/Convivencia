@@ -24,14 +24,14 @@ class AcudienteEstudiante
     /**
      * @var string
      *
-     * @ORM\Column(name="acudiente", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Acudiente")
      */
     private $acudiente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="estudiante", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Estudiante")
      */
     private $estudiante;
 

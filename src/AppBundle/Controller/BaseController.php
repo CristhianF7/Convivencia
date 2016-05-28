@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -14,7 +15,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  *
  * @author flia
  */
-class BaseController extends Controller
-{
-   public $esquema = "prueba";
+class BaseController extends Controller {
+
+    public $esquema = "prueba";
+
+   
+
 }
