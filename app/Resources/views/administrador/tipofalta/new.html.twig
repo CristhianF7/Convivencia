@@ -1,18 +1,14 @@
 {% extends "dashboard.html.twig" %}
 
 {% block body %}
-<div class="col-lg-6">
-    <h1>TipoFalta creation</h1>
+    <div class="col-lg-6">
+        <h1>Crear tipo de falta</h1>
 
-    {{ form_start(form) }}
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <input class="btn btn-primary" type="submit" value="Crear" />
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('tipofalta_index') }}">Back to the list</a>
-        </li>
-    </ul>
-</div>
+        <a href="{{ path('tipofalta_index') }}">Volver</a>
+    </div>
 {% endblock %}

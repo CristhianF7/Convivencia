@@ -2,18 +2,18 @@
 
 {% block body %}
 <div class="col-lg-6">
-    <h1>Acudiente list</h1>
+    <h1>Lista de acudientes</h1>
 
     <table  class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Primernombre</th>
-                <th>Segundonombre</th>
-                <th>Primerapellido</th>
-                <th>Segundoapellido</th>
-                <th>Fechanacimiento</th>
-                <th>Actions</th>
+                <th>Primer nombre</th>
+                <th>Segundo nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Fecha nacimiento</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -28,10 +28,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('acudiente_show', { 'id': acudiente.id }) }}">show</a>
+                            <a href="{{ path('acudiente_show', { 'id': acudiente.id }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('acudiente_edit', { 'id': acudiente.id }) }}">edit</a>
+                            <a href="{{ path('acudiente_edit', { 'id': acudiente.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -42,7 +42,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('acudiente_new') }}">Create a new entry</a>
+            <a href="{{ path('acudiente_new') }}">Crear nuevo acudiente </a>
         </li>
     </ul>
 </div>

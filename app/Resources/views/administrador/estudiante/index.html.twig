@@ -2,18 +2,18 @@
 
 {% block body %}
 <div class="col-lg-6">
-    <h1>Estudiante list</h1>
+    <h1>Lista de estudiantes</h1>
 
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Primernombre</th>
-                <th>Segundonombre</th>
-                <th>Primerapellido</th>
-                <th>Segundoapellido</th>
-                <th>Fechanacimiento</th>
-                <th>Actions</th>
+                <th>Primer nombre</th>
+                <th>Segundo nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Fecha nacimiento</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -28,10 +28,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">show</a>
+                            <a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">edit</a>
+                            <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -42,7 +42,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('estudiante_new') }}">Create a new entry</a>
+            <a href="{{ path('estudiante_new') }}">Crear un nuevo estudiante    </a>
         </li>
     </ul>
 </div>

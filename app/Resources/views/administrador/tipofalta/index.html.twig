@@ -2,14 +2,14 @@
 
 {% block body %}
 <div class="col-lg-6">
-    <h1>TipoFalta list</h1>
+    <h1>Tipos de faltas</h1>
 
     <table  class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descripcion</th>
-                <th>Actions</th>
+                <th>Descripción</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +20,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('tipofalta_show', { 'id': tipoFaltum.id }) }}">show</a>
+                            <a href="{{ path('tipofalta_show', { 'id': tipoFaltum.id }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('tipofalta_edit', { 'id': tipoFaltum.id }) }}">edit</a>
+                            <a href="{{ path('tipofalta_edit', { 'id': tipoFaltum.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -32,10 +32,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('tipofalta_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            <a href="{{ path('tipofalta_new') }}">Crear nuevo tipo de falta</a>
 </div>
 {% endblock %}

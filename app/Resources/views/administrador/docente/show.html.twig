@@ -1,50 +1,43 @@
 {% extends "dashboard.html.twig" %}
 
 {% block body %}
-<div class="col-lg-6">
-    <h1>Docente</h1>
+    <div class="col-lg-6">
+        <h1>Docente</h1>
 
-    <table  class="table table-bordered">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ docente.id }}</td>
-            </tr>
-            <tr>
-                <th>Primernombre</th>
-                <td>{{ docente.primerNombre }}</td>
-            </tr>
-            <tr>
-                <th>Segundonombre</th>
-                <td>{{ docente.segundoNombre }}</td>
-            </tr>
-            <tr>
-                <th>Primerapellido</th>
-                <td>{{ docente.primerApellido }}</td>
-            </tr>
-            <tr>
-                <th>Segundoapellido</th>
-                <td>{{ docente.segundoApellido }}</td>
-            </tr>
-            <tr>
-                <th>Fechanacimiento</th>
-                <td>{% if docente.fechaNacimiento %}{{ docente.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table  class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ docente.id }}</td>
+                </tr>
+                <tr>
+                    <th>Primer nombre</th>
+                    <td>{{ docente.primerNombre }}</td>
+                </tr>
+                <tr>
+                    <th>Segundo nombre</th>
+                    <td>{{ docente.segundoNombre }}</td>
+                </tr>
+                <tr>
+                    <th>Primer apellido</th>
+                    <td>{{ docente.primerApellido }}</td>
+                </tr>
+                <tr>
+                    <th>Segundo apellido</th>
+                    <td>{{ docente.segundoApellido }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha nacimiento</th>
+                    <td>{% if docente.fechaNacimiento %}{{ docente.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('docente_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('docente_edit', { 'id': docente.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-</div>
+        <a href="{{ path('docente_index') }}">Volver</a>
+        <br>
+        <a href="{{ path('docente_edit', { 'id': docente.id }) }}">Editar</a>
+        {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Eliminar">
+        {{ form_end(delete_form) }}
+    </div>
 {% endblock %}

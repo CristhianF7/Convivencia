@@ -1,50 +1,43 @@
 {% extends "dashboard.html.twig" %}
 
 {% block body %}
-<div class="col-lg-6">
-    <h1>Estudiante</h1>
+    <div class="col-lg-6">
+        <h1>Estudiante</h1>
 
-    <table class="table table-bordered">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ estudiante.id }}</td>
-            </tr>
-            <tr>
-                <th>Primernombre</th>
-                <td>{{ estudiante.primerNombre }}</td>
-            </tr>
-            <tr>
-                <th>Segundonombre</th>
-                <td>{{ estudiante.segundoNombre }}</td>
-            </tr>
-            <tr>
-                <th>Primerapellido</th>
-                <td>{{ estudiante.primerApellido }}</td>
-            </tr>
-            <tr>
-                <th>Segundoapellido</th>
-                <td>{{ estudiante.segundoApellido }}</td>
-            </tr>
-            <tr>
-                <th>Fechanacimiento</th>
-                <td>{% if estudiante.fechaNacimiento %}{{ estudiante.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ estudiante.id }}</td>
+                </tr>
+                <tr>
+                    <th>Primer nombre</th>
+                    <td>{{ estudiante.primerNombre }}</td>
+                </tr>
+                <tr>
+                    <th>Segundo nombre</th>
+                    <td>{{ estudiante.segundoNombre }}</td>
+                </tr>
+                <tr>
+                    <th>Primer apellido</th>
+                    <td>{{ estudiante.primerApellido }}</td>
+                </tr>
+                <tr>
+                    <th>Segundo apellido</th>
+                    <td>{{ estudiante.segundoApellido }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha nacimiento</th>
+                    <td>{% if estudiante.fechaNacimiento %}{{ estudiante.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('estudiante_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-</div>
+        <a href="{{ path('estudiante_index') }}">Volver</a>
+        <br>
+        <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">Editar</a>
+        {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Eliminar">
+        {{ form_end(delete_form) }}
+    </div>
 {% endblock %}
