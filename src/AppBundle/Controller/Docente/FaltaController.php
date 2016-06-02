@@ -26,8 +26,6 @@ class FaltaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        dump($this->getUser());
-        
         $faltas = $em->getRepository('AppBundle:Falta')->findAll();
 
         return $this->render('docentes/falta/index.html.twig', array(

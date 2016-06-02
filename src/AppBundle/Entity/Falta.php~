@@ -211,28 +211,5 @@ class Falta
         $this->respuesta = $respuesta;
     }
 
-
-    /**
-     * Set estado
-     *
-     * @param \AppBundle\Entity\EstadosFaltas $estado
-     *
-     * @return Falta
-     */
-    public function setEstado(\AppBundle\Entity\EstadosFaltas $estado = null)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \AppBundle\Entity\EstadosFaltas
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
 }
+

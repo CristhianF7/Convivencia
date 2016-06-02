@@ -1,0 +1,38 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-6">
+    <h1>EstadosFaltas</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ estadosFalta.id }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ estadosFalta.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{% if estadosFalta.estado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('administrador_estadosfaltas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('administrador_estadosfaltas_edit', { 'id': estadosFalta.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+{% endblock %}

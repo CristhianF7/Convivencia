@@ -12,6 +12,7 @@ use AppBundle\Entity\Acudiente;
 use AppBundle\Entity\TipoFalta;
 use AppBundle\Entity\Administrador;
 use AppBundle\Entity\AcudienteEstudiante;
+use AppBundle\Entity\EstadosFaltas;
 
 class LoadData implements FixtureInterface, ContainerAwareInterface
 {
@@ -126,6 +127,21 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $manager->persist($asociacion);
 
         }
+
+        $estadosFaltas = new EstadosFaltas();
+        $estadosFaltas->setDescripcion('Iniciado');
+        $estadosFaltas->setEstado(true);
+        $manager->persist($estadosFaltas);
+
+        $estadosFaltas2 = new EstadosFaltas();
+        $estadosFaltas2->setDescripcion('Por revisar');
+        $estadosFaltas2->setEstado(true);
+        $manager->persist($estadosFaltas2);
+
+        $estadosFaltas3 = new EstadosFaltas();
+        $estadosFaltas3->setDescripcion('Terminado');
+        $estadosFaltas3->setEstado(true);
+        $manager->persist($estadosFaltas3);
 
         $manager->flush();
     }
