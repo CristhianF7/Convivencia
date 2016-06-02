@@ -108,6 +108,28 @@ security:
               target: /
               invalidate_session: false 
         
+        acudientes_login:
+            pattern:  ^/acudientes/login$
+            anonymous: ~
+            provider: acudientes
+            context: session_key_acudientes
+            form_login:
+              login_path: login_acudientes
+              check_path: login_acudientes
+              default_target_path: acudientes-entrada
+        acudientes:
+            pattern: ^/acudientes
+            provider: acudientes
+            context: session_key_acudientes
+            form_login:
+              login_path: login_acudientes
+              check_path: login_acudientes
+              default_target_path: acudientes-entrada
+            logout:
+              path:   /acudientes/logout
+              target: /
+              invalidate_session: false 
+        
   
             
     access_control:
@@ -119,7 +141,9 @@ security:
         
         - { path: ^/estudiantes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/estudiantes, roles: ROLE_ESTUDIANTE }
-        
+
+        - { path: ^/acudientes/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/acudientes, roles: ROLE_ACUDIENTE }
        
         
         
