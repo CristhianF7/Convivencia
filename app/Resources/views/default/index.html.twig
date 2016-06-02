@@ -9,6 +9,11 @@
 		margin: 20px;
 		text-decoration: none !important;
 	}
+	pre{
+		margin-left: 20%;
+		margin-right: 20%;
+		font-style: bold;
+	}
 </style>
 <div style="text-align: center;">
    <h2 >BIENVENIDOS</h2>
@@ -20,6 +25,34 @@
    <a href="{{ path('estudiantes-entrada') }}"  class="menus"> <i class="fa fa-users fa-5x"></i> <br/>ESTUDIANTES</a>
    <a href="{{ path('acudientes-entrada') }}"  class="menus"> <i class="fa fa-bookmark fa-5x"></i> <br/>ACUDIENTES</a>
    <hr/>
+
+   <a href="https://github.com/CristhianF7/Convivencia" class="btn btn-success" target="_blank">Repositorio: https://github.com/CristhianF7/Convivencia</a>
+<br/>
+<br/>
+   <strong>Instrucciones Instalación</strong>
+   <br/>
+   <i>* Se uso el <a href="https://www.symfony.com" target="_blank">framework PHP Symfony</a> en su versión 3. Blog en español <a href="http://symfony.es" target="_blank">symfony.es</a></i>
+   <hr>
+   <p>1.Descargar el repositorio</p>
+   <pre>git clone https://github.com/CristhianF7/Convivencia</pre>
+   <p>2. Entrar en la carpeta e instalar dependecias con <a href="https://getcomposer.org/" target="_blank">composer</a></p>
+   <pre>composer install</pre>
+   <p>3. Instalar base de datos</p>
+   <pre>bin/console doctrine:database:create</pre>
+
+   <p>4. Creamos el esquema de base de datos</p>
+   <pre>bin/console doctrine:schema:create</pre>
+
+   <p>5. Cargar los de ejemplo</p>
+   <pre>bin/console doctrine:fixtures:load</pre>
+
+   <hr>
+   <p>¡Eso es todo!!, la aplicación es funcional, con usuarios:</p>
+  
+   <li>Administrador: admin y pass 123456</li>
+   <li>Docentes: profe_1 y pass 123456, rango del 1 al 5</li>
+   <li>Estudiante: estudiante_1 y pass 123456, rango del 1 al 11</li>
+   <li>Acudientes: acudiente_1 y pass 123456, rango del 1 al 11</li>
 </div>
 {% endblock %}
 
