@@ -10,6 +10,7 @@ use AppBundle\Models\Persona as BasePersona;
  *
  * @ORM\Table(name="administrador")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AdministradorRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Administrador extends BasePersona
 {

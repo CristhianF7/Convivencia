@@ -10,7 +10,8 @@ use AppBundle\Models\Persona as BasePersona;
  *
  * @ORM\Table(name="docente")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DocenteRepository")
- */
+ * @ORM\HasLifecycleCallbacks()
+*/
 class Docente extends BasePersona
 {
     /**

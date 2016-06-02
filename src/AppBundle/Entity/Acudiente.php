@@ -10,6 +10,7 @@ use AppBundle\Models\Persona as BasePersona;
  *
  * @ORM\Table(name="acudiente")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AcudienteRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Acudiente extends BasePersona
 {

@@ -33,4 +33,17 @@ class AcudienteController  extends BaseController
     {
         return $this->render('fragmentos/perfil.html.twig');
     }
+
+    /**
+     * @Route("/mis-estudiantes", name="acudientes-estudiantes")
+     */
+    public function estudiantesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $this->getUser();
+        $estudiantes = $em->getRepository('AppBundle:AcudienteEstudiante')->findByAcudiente($usuario);
+        return $this->render('acudientes/estudiantes.html.twig',[
+            'estudiantes' => $estudiantes
+        ]);
+    }
 }

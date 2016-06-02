@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AcudienteEstudiante
  *
  * @ORM\Table(name="acudiente_estudiante")
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AcudienteEstudianteRepository")
  */
 class AcudienteEstudiante
@@ -216,6 +217,29 @@ class AcudienteEstudiante
     public function getFechaEdicion()
     {
         return $this->fechaEdicion;
+    }
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setFecha()
+    {
+        $this->setFechaCreacion(new \DateTime());        
+        $this->setFechaEdicion(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setFechaActualizacion()
+    {      
+        $this->setFechaEdicion(new \DateTime());
+    }
+
+    public function __toString()
+    {
+        return $this->getAcudiente()." - ".$this->getEstudiante();
     }
 }
 

@@ -11,6 +11,7 @@ use AppBundle\Entity\Estudiante;
 use AppBundle\Entity\Acudiente;
 use AppBundle\Entity\TipoFalta;
 use AppBundle\Entity\Administrador;
+use AppBundle\Entity\AcudienteEstudiante;
 
 class LoadData implements FixtureInterface, ContainerAwareInterface
 {
@@ -61,7 +62,7 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $manager->persist($estudiante);
         }   
         
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 11; $i++) {
             $acudiente = new Acudiente();
             $acudiente->setPrimerNombre('Acudiente ' .$i);
             $acudiente->setSegundoNombre('... '.$i);
@@ -78,6 +79,8 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             
             $manager->persist($acudiente);
         }  
+
+
         
         
             $tipoFaltaGrave = new TipoFalta();
@@ -108,6 +111,22 @@ class LoadData implements FixtureInterface, ContainerAwareInterface
             $admin->setPassword($encoded);
 
             $manager->persist($admin);   
+        $manager->flush();
+
+
+
+        for ($i = 1; $i <= 11; $i++) {
+            $asociacion = new AcudienteEstudiante();
+            $acudiente = $manager->getRepository('AppBundle:Acudiente')->findOneByUsername("acudiente_".$i);
+            $estudiante = $manager->getRepository('AppBundle:Estudiante')->findOneByUsername("estudiante_".$i);
+            $asociacion->setAcudiente($acudiente);
+            $asociacion->setEstudiante($estudiante);
+            $asociacion->setParentesco("PADRE-FAMILIA");
+            $asociacion->setObservacion("...");
+            $manager->persist($asociacion);
+
+        }
+
         $manager->flush();
     }
 }
