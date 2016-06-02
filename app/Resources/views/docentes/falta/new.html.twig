@@ -2,20 +2,16 @@
 
 {% block body %}
 <div class="col-lg-6">
-    <h1>Falta creation</h1>
+    <h1>Creación de Falta</h1>
 
     {{ form_start(form) }}
     <div style="display: none;">{{ form_row(form.docente) }}</div>
         {{ form_widget(form) }}
         
-        <input type="submit" value="Create" />
+        <input class="btn btn-primary" type="submit" value="Crear" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('docentes_falta_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a href="{{ path('docentes_falta_index') }}">Volver</a>
 </div>
 {% endblock %}
 {% block javascripts %}

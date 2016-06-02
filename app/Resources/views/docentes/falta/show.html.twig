@@ -11,26 +11,21 @@
                 <td>{{ faltum.id }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
+                <th>Descripción</th>
                 <td>{{ faltum.descripcion }}</td>
             </tr>
             <tr>
-                <th>Fechacreacion</th>
+                <th>Fecha creación</th>
                 <td>{% if faltum.fechaCreacion %}{{ faltum.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('docentes_falta_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('docentes_falta_edit', { 'id': faltum.id }) }}">Edit</a>
-        </li>
-        <li>
+            <a href="{{ path('docentes_falta_index') }}">Volver</a>
+            <br>
+            <a href="{{ path('docentes_falta_edit', { 'id': faltum.id }) }}">Editar</a>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
