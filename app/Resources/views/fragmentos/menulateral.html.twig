@@ -27,8 +27,10 @@
     {% endif %}
     
      {% if is_granted('ROLE_ACUDIENTE') %}
-         <li class="menu-lateral-item" id="acudientes-entrada" ><a href="{{ path('acudientes-entrada') }}" id="acudientes-entrada-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
-          <li class="menu-lateral-item" id="acudientes-estudiantes" ><a href="{{ path('acudientes-estudiantes') }}" id="acudientes-estudiantes-a"><i class="fa fa-users"></i> Mis Estudiantes <span class="sr-only"></span></a></li>
+        <li class="menu-lateral-item" id="acudientes-entrada" ><a href="{{ path('acudientes-entrada') }}" id="acudientes-entrada-a"><i class="fa fa-dashboard"></i> Inicio <span class="sr-only"></span></a></li>
+        <li class="menu-lateral-item" id="acudientes-estudiantes" ><a href="{{ path('acudientes-estudiantes') }}" id="acudientes-estudiantes-a"><i class="fa fa-users"></i> Mis Estudiantes <span class="sr-only"></span></a></li>
+
+        <li class="menu-lateral-item" id="acudientes-faltas" ><a href="{{ path('acudientes-faltas') }}" id="acudientes-faltas-a"><i class="fa fa-comment-o"></i> Mis faltas <span class="sr-only"></span></a></li>
 
    
     {% endif %}

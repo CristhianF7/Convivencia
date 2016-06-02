@@ -46,4 +46,25 @@ class AcudienteController  extends BaseController
             'estudiantes' => $estudiantes
         ]);
     }
+
+     /**
+     * @Route("/faltas", name="acudientes-faltas")
+     */
+    public function acudientesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $this->getUser();
+        
+        $faltas = $em->createQuery('
+            SELECT f,e FROM AppBundle:Falta f
+            JOIN f.estudiante e
+            JOIN e.acudientes a
+        ');
+        //$faltas->setParameter('acudiente',$usuario);
+        $falta = $faltas->getResult();
+        return $this->render('acudientes/faltas.html.twig',[
+            'faltas' => $falta,
+            'usuario'=>$usuario
+        ]);
+    }
 }

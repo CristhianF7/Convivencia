@@ -1,0 +1,33 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+
+    <div class="col-lg-12">
+    <h2>Faltas</h2>
+    	<table class="table table-bordered">
+    		<thead>
+    			<tr>
+    				<th>No.</th>
+    				<th>Falta</th>
+    				<th>Descripción</th>
+    				<th>Docente</th>
+    				<th>Fecha</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			{% for falta in faltas %}
+    				{% for acudiente in falta.estudiante.acudientes if acudiente.acudiente.id == usuario.id %}
+	    				<tr>
+	    					<td>{{ loop.index }}</td>
+	    					<td>{{ falta.estudiante }} 	    					
+	    					</td>
+	    					<td>{{ falta.descripcion }}</td>
+	    					<td>{{ falta.docente }}</td>
+	    					<td>{{ falta.fechaCreacion|date('d-M-Y H:i:s') }}</td>
+	    				</tr>
+    				{% endfor %}
+    			{% endfor %}
+    		</tbody>
+    	</table>
+    </div>
+{% endblock %}

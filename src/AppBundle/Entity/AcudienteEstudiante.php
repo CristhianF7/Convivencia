@@ -32,7 +32,7 @@ class AcudienteEstudiante
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Estudiante")
+     * @ORM\ManyToOne(targetEntity="Estudiante", inversedBy="acudientes")
      */
     private $estudiante;
 

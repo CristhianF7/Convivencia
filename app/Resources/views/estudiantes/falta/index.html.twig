@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Docente</th>
                 <th>Descripción</th>
                 <th>Fecha creación</th>
                 <th>Acción</th>
@@ -18,6 +19,7 @@
             {% if faltum.estudiante.id == app.user.id %}
             <tr>
                 <td><a href="{{ path('estudiante_falta_show', { 'id': faltum.id }) }}">{{ faltum.id }}</a></td>
+                <td>{{ faltum.docente }}</td>
                 <td>{{ faltum.descripcion }}</td>
                 <td>{% if faltum.fechaCreacion %}{{ faltum.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
