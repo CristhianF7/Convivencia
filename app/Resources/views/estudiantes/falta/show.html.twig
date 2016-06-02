@@ -11,11 +11,11 @@
                 <td>{{ faltum.id }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
+                <th>Descripción</th>
                 <td>{{ faltum.descripcion }}</td>
             </tr>
             <tr>
-                <th>Fechacreacion</th>
+                <th>Fecha creación</th>
                 <td>{% if faltum.fechaCreacion %}{{ faltum.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
@@ -23,7 +23,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('estudiante_falta_index') }}">Back to the list</a>
+            <a href="{{ path('estudiante_falta_index') }}">Volver</a>
         </li>
     </ul>
 </div>

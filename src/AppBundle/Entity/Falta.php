@@ -50,6 +50,21 @@ class Falta
     private $fechaCreacion;
 
     /**
+     *
+     * @var type string
+     * @ORM\Column(name="respuesta", type="text", nullable=true)
+     */
+    private $respuesta;
+
+    public function getRespuesta() {
+        return $this->respuesta;
+    }
+
+    public function setRespuesta(type $respuesta) {
+        $this->respuesta = $respuesta;
+    }
+
+        /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Docente")
