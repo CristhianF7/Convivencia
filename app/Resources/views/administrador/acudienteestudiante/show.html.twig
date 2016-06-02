@@ -29,18 +29,12 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
             <a href="{{ path('administrador_acudiente-estudiante_index') }}">Volver</a>
-        </li>
-        <li>
+            <br>
             <a href="{{ path('administrador_acudiente-estudiante_edit', { 'id': acudienteEstudiante.id }) }}">Editar</a>
-        </li>
-        <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Borrar">
+                <input class="btn btn-danger" type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
-        </li>
     </ul>
     </div>
 {% endblock %}
