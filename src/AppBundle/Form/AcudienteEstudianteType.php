@@ -5,9 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
-class FaltaType extends AbstractType
+class AcudienteEstudianteType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,12 +15,10 @@ class FaltaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descripcion')
-            ->add('fechaCreacion')
-            ->add('tipoFalta')
+            ->add('parentesco')
+            ->add('observacion')
+            ->add('acudiente')
             ->add('estudiante')
-            ->add('docente')
-            ->add('estado',CheckboxType::class)
         ;
     }
     
@@ -31,7 +28,7 @@ class FaltaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Falta'
+            'data_class' => 'AppBundle\Entity\AcudienteEstudiante'
         ));
     }
 }

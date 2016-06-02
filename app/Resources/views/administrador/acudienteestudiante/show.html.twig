@@ -1,0 +1,46 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-6">
+    <h1>AcudienteEstudiante</h1>
+
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ acudienteEstudiante.id }}</td>
+            </tr>
+            <tr>
+                <th>Parentesco</th>
+                <td>{{ acudienteEstudiante.parentesco }}</td>
+            </tr>
+            <tr>
+                <th>Observación</th>
+                <td>{{ acudienteEstudiante.observacion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha creación</th>
+                <td>{% if acudienteEstudiante.fechaCreacion %}{{ acudienteEstudiante.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fecha edición</th>
+                <td>{% if acudienteEstudiante.fechaEdicion %}{{ acudienteEstudiante.fechaEdicion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('administrador_acudiente-estudiante_index') }}">Volver</a>
+        </li>
+        <li>
+            <a href="{{ path('administrador_acudiente-estudiante_edit', { 'id': acudienteEstudiante.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+{% endblock %}

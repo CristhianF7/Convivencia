@@ -45,6 +45,7 @@ class FaltaController extends Controller
     public function newAction(Request $request)
     {
         $faltum = new Falta();
+        $faltum->setFechaCreacion(new \DateTime());
         $form = $this->createForm('AppBundle\Form\FaltaType', $faltum);
         $form->handleRequest($request);
 

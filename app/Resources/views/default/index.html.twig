@@ -1,12 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   BIENVENIDOS
-   <hr>
-   <a href="{{ path('admin-entrada') }}">ADMINISTRADORES</a>  
-   <a href="{{ path('docente-entrada') }}">DOCENTES</a>
-   <a href="{{ path('estudiantes-entrada') }}">ESTUDIANTES</a>
-   <a href="{{ path('acudientes-entrada') }}">ACUDIENTE</a>
+<style type="text/css">
+	.menus{
+		display: inline-block;
+		text-align: center;
+		padding: 5px;
+		margin: 20px;
+		text-decoration: none !important;
+	}
+</style>
+<div style="text-align: center;">
+   <h2 >BIENVENIDOS</h2>
 
+   <hr/>
+   
+   <a href="{{ path('admin-entrada') }}" class="menus"> <i class="fa fa-dashboard fa-5x"></i> <br/>ADMINISTRADORES</a>  
+   <a href="{{ path('docente-entrada') }}"  class="menus"><i class="fa fa-commenting fa-5x"></i> <br/> DOCENTES</a>
+   <a href="{{ path('estudiantes-entrada') }}"  class="menus"> <i class="fa fa-users fa-5x"></i> <br/>ESTUDIANTES</a>
+   <a href="{{ path('acudientes-entrada') }}"  class="menus"> <i class="fa fa-bookmark fa-5x"></i> <br/>ACUDIENTES</a>
+   <hr/>
+</div>
 {% endblock %}
 

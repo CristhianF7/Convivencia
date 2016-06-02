@@ -60,7 +60,7 @@ class Falta
         return $this->respuesta;
     }
 
-    public function setRespuesta(type $respuesta) {
+    public function setRespuesta($respuesta) {
         $this->respuesta = $respuesta;
     }
 

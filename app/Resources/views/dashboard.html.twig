@@ -51,7 +51,7 @@
                   {% endembed %}
                 <!-- End: Menu lateral -->
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="contenidoPpal" style="display:none;">
                 {% block body %}{% endblock %}
              </div>
         </div>
@@ -70,6 +70,14 @@
 <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
 <script src="{{ asset('js/funciones.js') }}"></script>
 <!-- End: Scripts -->
+<script type="text/javascript">
+    $(':input').addClass("form-control");
+
+    $(document).ready(function(){
+        $('#contenidoPpal').show('slide');
+    })
+</script>
+
  {% block javascripts %}{% endblock %}
 </body>
 </html>
