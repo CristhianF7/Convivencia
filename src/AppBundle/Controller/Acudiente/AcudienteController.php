@@ -7,8 +7,12 @@
  */
 
 namespace AppBundle\Controller\Acudiente;
+
+use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Description of AcudienteController
@@ -66,5 +70,54 @@ class AcudienteController  extends BaseController
             'faltas' => $falta,
             'usuario'=>$usuario
         ]);
+    }
+
+    /**
+     * Método para agregar la respuesta del acudiente
+     * @Route("/agregarRespuesta", name="agregar-respuesta")
+     * @Method("POST")
+     */
+    public function AgregarRespuestaAction(Request $request)
+    {
+        $usuario = $this->getUser();
+        $id = $request->request->get('falta');
+        $mensaje = $request->request->get('mensaje');
+        $estudiante = $request->request->get('estudiante');
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $acudienteEstudiante = $em->getRepository('AppBundle:AcudienteEstudiante')->findOneBy(array(
+            'acudiente'=>$usuario->getId(),
+            'estudiante'=>$estudiante
+        ));
+
+
+        $falta = $em->getRepository('AppBundle:Falta')->findOneBy(array(
+            'estudiante' => $estudiante,
+            'id'        => $id
+        ));
+
+        $mensajePeticion = "";
+        $codigo = "201";
+
+        if($falta != null && $acudienteEstudiante != null){
+            $mensajePeticion = "Guardado correctamente";
+            $falta->setRespuesta($mensaje);
+            $em->flush();
+        }else{
+            $mensajePeticion ="Ha habido un error";
+            $codigo = 500;
+        }
+
+        $response = new JsonResponse();
+
+
+        $response->setData(array(
+            'falta' => $mensajePeticion,
+            'codigo'=> $codigo
+        ));
+
+        $response->setStatusCode($codigo);
+        return $response;
     }
 }

@@ -23,6 +23,7 @@ class EstudianteController extends BaseController
      */
     public function entradaAction()
     {
+
         return $this->render('estudiantes/entrada.html.twig');
     }
     

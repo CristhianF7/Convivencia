@@ -49,6 +49,7 @@ class DocenteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($docente);
             $em->flush();
+            $this->MsgFlash("Creado correctamente.","info");
 
             return $this->redirectToRoute('docente_show', array('id' => $docente->getId()));
         }
@@ -91,6 +92,7 @@ class DocenteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($docente);
             $em->flush();
+            $this->MsgFlash("Actualización correcta.");
 
             return $this->redirectToRoute('docente_edit', array('id' => $docente->getId()));
         }
@@ -117,6 +119,8 @@ class DocenteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($docente);
             $em->flush();
+            $this->MsgFlash("Eliminado correctamente.","danger");
+            
         }
 
         return $this->redirectToRoute('docente_index');
@@ -136,5 +140,17 @@ class DocenteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
     }
 }

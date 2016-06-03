@@ -11,8 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AcudienteEstudianteRepository")
  */
-class AcudienteEstudiante
+class AcudienteEstudiante 
 {
+    
     /**
      * @var int
      *

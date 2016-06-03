@@ -51,7 +51,7 @@ class FaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($faltum);
             $em->flush();
-
+            $this->MsgFlash("Creado correctamente.","info");
             return $this->redirectToRoute('docentes_falta_show', array('id' => $faltum->getId()));
         }
 
@@ -93,7 +93,7 @@ class FaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($faltum);
             $em->flush();
-
+            $this->MsgFlash("Actualización correcta.");
             return $this->redirectToRoute('docentes_falta_edit', array('id' => $faltum->getId()));
         }
 
@@ -119,6 +119,7 @@ class FaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($faltum);
             $em->flush();
+            $this->MsgFlash("Eliminado correctamente.","danger");
         }
 
         return $this->redirectToRoute('docentes_falta_index');
@@ -138,5 +139,17 @@ class FaltaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+     private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
     }
 }

@@ -41,7 +41,7 @@ class DocenteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $tiposFaltas = $em->getRepository('AppBundle:TipoFalta')->findAll();
-        dump($tiposFaltas);
+        
         return $this->render('docentes/registroFalta.html.twig',[
             'tiposFaltas' => $tiposFaltas
         ]);

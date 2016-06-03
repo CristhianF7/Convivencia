@@ -49,6 +49,7 @@ class AcudienteEstudianteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($acudienteEstudiante);
             $em->flush();
+            $this->MsgFlash("Creado correctamente.","info");
 
             return $this->redirectToRoute('administrador_acudiente-estudiante_show', array('id' => $acudienteEstudiante->getId()));
         }
@@ -91,6 +92,7 @@ class AcudienteEstudianteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($acudienteEstudiante);
             $em->flush();
+            $this->MsgFlash("Actualización correcta.");
 
             return $this->redirectToRoute('administrador_acudiente-estudiante_edit', array('id' => $acudienteEstudiante->getId()));
         }
@@ -117,6 +119,8 @@ class AcudienteEstudianteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($acudienteEstudiante);
             $em->flush();
+            $this->MsgFlash("Eliminado correctamente.","danger");
+
         }
 
         return $this->redirectToRoute('administrador_acudiente-estudiante_index');
@@ -136,5 +140,17 @@ class AcudienteEstudianteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
     }
 }

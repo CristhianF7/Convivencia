@@ -1,0 +1,31 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <h2>Reporte de faltas</h2>
+     <script>
+        localStorage.setItem("menuLateral", "admin-reportes");
+    </script>
+
+    <table class="table table-bordered">
+    	<thead>
+	    	<tr>
+	    		<td>Código</td>
+	    		<td>Docente</td>
+	    		<td>Falta</td>
+	    		<td>Estudiante</td>
+	    		<td>Respuesta</td>
+	    	</tr>
+    	</thead>
+    	<tbody>
+    		{% for falta in faltas %}
+    		<tr>
+    			<td>{{ falta.id }}</td>
+    			<td>{{ falta.docente }}</td>
+    			<td>{{ falta.descripcion }}</td>
+    			<td>{{ falta.estudiante }}</td>
+    			<td>{{ falta.respuesta }}</td>
+    		</tr>
+    		{% endfor %}
+    	</tbody>
+    </table>
+{% endblock %}

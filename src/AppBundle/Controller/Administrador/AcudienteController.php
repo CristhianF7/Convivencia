@@ -49,6 +49,7 @@ class AcudienteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($acudiente);
             $em->flush();
+            $this->MsgFlash("Creado correctamente.","info");
 
             return $this->redirectToRoute('acudiente_show', array('id' => $acudiente->getId()));
         }
@@ -91,6 +92,7 @@ class AcudienteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($acudiente);
             $em->flush();
+            $this->MsgFlash("Actualización correcta.");
 
             return $this->redirectToRoute('acudiente_edit', array('id' => $acudiente->getId()));
         }
@@ -117,6 +119,8 @@ class AcudienteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($acudiente);
             $em->flush();
+            $this->MsgFlash("Eliminado correctamente.","danger");
+            
         }
 
         return $this->redirectToRoute('acudiente_index');
@@ -136,5 +140,17 @@ class AcudienteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+     private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
     }
 }

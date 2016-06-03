@@ -49,6 +49,7 @@ class TipoFaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($tipoFaltum);
             $em->flush();
+            $this->MsgFlash("Creado correctamente.","info");
 
             return $this->redirectToRoute('tipofalta_show', array('id' => $tipoFaltum->getId()));
         }
@@ -91,6 +92,7 @@ class TipoFaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($tipoFaltum);
             $em->flush();
+            $this->MsgFlash("Actualización correcta.");
 
             return $this->redirectToRoute('tipofalta_edit', array('id' => $tipoFaltum->getId()));
         }
@@ -117,6 +119,8 @@ class TipoFaltaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($tipoFaltum);
             $em->flush();
+            $this->MsgFlash("Eliminado correctamente.","danger");
+
         }
 
         return $this->redirectToRoute('tipofalta_index');
@@ -136,5 +140,17 @@ class TipoFaltaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
     }
 }

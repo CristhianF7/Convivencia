@@ -28,4 +28,16 @@ class AdministradorController extends BaseController
     {
         return $this->render('fragmentos/perfil.html.twig');
     }
+
+     /**
+     * @Route("/reportes", name="admin-reportes")
+     */
+    public function reportesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $faltas = $em->getRepository('AppBundle:Falta')->findAll();
+        return $this->render('administrador/reporte.html.twig',[
+            'faltas'=>$faltas
+        ]);
+    }
 }
