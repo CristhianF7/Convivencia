@@ -25,8 +25,10 @@ class FaltaController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        
-        $faltas = $em->getRepository('AppBundle:Falta')->findAll();
+        $docente = $this->getUser();
+        $faltas = $em->getRepository('AppBundle:Falta')->findBy(array(
+            'docente'=>$docente
+        ));
 
         return $this->render('docentes/falta/index.html.twig', array(
             'faltas' => $faltas,
@@ -71,6 +73,11 @@ class FaltaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($faltum);
 
+       if($faltum->getDocente()->getId() != $this->getUser()->getId()){
+            $this->MsgFlash("Estás accediento a un recurso que no tienes permiso.","danger");
+            return $this->redirectToRoute('docentes_falta_index');
+        }
+
         return $this->render('docentes/falta/show.html.twig', array(
             'faltum' => $faltum,
             'delete_form' => $deleteForm->createView(),
@@ -88,6 +95,11 @@ class FaltaController extends Controller
         $deleteForm = $this->createDeleteForm($faltum);
         $editForm = $this->createForm('AppBundle\Form\FaltaType', $faltum);
         $editForm->handleRequest($request);
+
+       if($faltum->getDocente()->getId() != $this->getUser()->getId()){
+            $this->MsgFlash("Estás accediento a un recurso que no tienes permiso.","danger");
+            return $this->redirectToRoute('docentes_falta_index');
+        }
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -115,6 +127,11 @@ class FaltaController extends Controller
         $form = $this->createDeleteForm($faltum);
         $form->handleRequest($request);
 
+        if($faltum->getDocente()->getId() != $this->getUser()->getId()){
+            $this->MsgFlash("Estás accediento a un recurso que no tienes permiso.","danger");
+            return $this->redirectToRoute('docentes_falta_index');
+        }
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($faltum);

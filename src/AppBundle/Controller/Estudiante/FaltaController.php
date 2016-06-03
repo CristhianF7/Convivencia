@@ -25,7 +25,9 @@ class FaltaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $faltas = $em->getRepository('AppBundle:Falta')->findAll();
+        $faltas = $em->getRepository('AppBundle:Falta')->findBy(array(
+            'estudiante'=>$this->getUser()->getId()
+        ));
 
         return $this->render('estudiantes/falta/index.html.twig', array(
             'faltas' => $faltas,
@@ -41,8 +43,25 @@ class FaltaController extends Controller
     public function showAction(Falta $faltum)
     {
 
+        if($faltum->getDocente()->getId() != $this->getUser()->getId()){
+            $this->MsgFlash("Estás tratando de hacer trampa?? no seas chismoso, te estamos monitoreando :).","danger");
+            return $this->redirectToRoute('estudiante_falta_index');
+        }
+
         return $this->render('estudiantes/falta/show.html.twig', array(
             'faltum' => $faltum,
         ));
     }
+
+     private function MsgFlash($mensaje = "Acción Realizada correctamente.", $tipoAlerta = 'success', $tituloAlerta = 'Mensaje: ')
+    {
+        $this->get('session')->getFlashBag()->add(
+                'notice',
+                array(
+                    'alert' => $tipoAlerta,
+                    'title' => $tituloAlerta,
+                    'message' => $mensaje
+                )
+            );
+    }   
 }
