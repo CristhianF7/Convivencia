@@ -43,7 +43,7 @@ class FaltaController extends Controller
     public function showAction(Falta $faltum)
     {
 
-        if($faltum->getDocente()->getId() != $this->getUser()->getId()){
+        if($faltum->getEstudiante()->getId() != $this->getUser()->getId()){
             $this->MsgFlash("Estás tratando de hacer trampa?? no seas chismoso, te estamos monitoreando :).","danger");
             return $this->redirectToRoute('estudiante_falta_index');
         }
