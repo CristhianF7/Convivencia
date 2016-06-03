@@ -1,13 +1,13 @@
 AplicativoConvivencia
 =====================
 ##Instrucciones Instalación 
-Se uso el framework PHP Symfony en su versión 3. Blog en español symfony.es
+Se usó el framework PHP Symfony en su versión 3. Blog en español symfony.es
 Aplicación de ejemplo: http://52.33.16.66/Convivencia/
 - 1.Descargar el repositorio
 ```sh
 $ git clone https://github.com/CristhianF7/Convivencia
 ```
-- 2. Entrar en la carpeta e instalar dependecias con composer
+- 2. Entrar en la carpeta e instalar dependencias con composer
 ```sh
 $ composer install
 ```
@@ -20,7 +20,7 @@ $ bin/console doctrine:database:create
 $ bin/console doctrine:schema:create
 ```
 
-- 5. Cargar los de ejemplo
+- 5. Cargar los datos de ejemplo
 ``` sh
 $ bin/console doctrine:fixtures:load
 ```
